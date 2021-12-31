@@ -1,0 +1,23 @@
+div{
+    display:flex;
+}
+.text-field{
+    display:grid;
+    flex-direction:column;
+    justify-content:center;
+    margin-top: 10px;
+    padding: 4px;
+  margin: 5px;
+
+}
+
+div .parent {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: aquamarine;
+}
+
+ul{
+    text-decoration: none;
+
+}
