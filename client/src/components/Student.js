@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
-
         },
     },
 }));
@@ -36,16 +35,18 @@ export default function Student() {
 
     useEffect(() => {
 
-
+        fetch(" http://localhost:8080/student/findAll ")
+            .then(res => res.json())
+            .then(result => {
+                setStudents(result)
+            })
     }, [])
     return (
 
         <Container>
             <Paper elevation={3} style={paperStyle}>
                 <h1 style={{ color: "blue", textDecoration: "none" }}><u>Add Student</u></h1>
-
                 <form className={classes.root} noValidate autoComplete="off">
-
                     <TextField id="outlined-basic" label="Student Name" variant="outlined" fullWidth
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -58,11 +59,18 @@ export default function Student() {
                         Submit
                     </Button>
                 </form>
-
             </Paper>
-
-
-
+            <h1>Students</h1>
+            <Paper elevation={3} style={paperStyle}>
+                {students.map(student => (
+                    <Paper elevation={6} style={{ margin: "10px", padding: "15px", textAlign: "left" }} key={student.id}>
+                        Id:{student.id}<br />
+                        Name:{student.name}<br />
+                        Address:{student.address}
+                    </Paper>
+                ))
+                }
+            </Paper>
         </Container>
     );
 }
