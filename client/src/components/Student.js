@@ -23,11 +23,19 @@ export default function Student() {
         e.preventDefault();
         const student = { name, address };
         console.log(student);
+        fetch(" http://localhost:8080/student/add ", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(student)
+        }).then(() => {
+            console.log("New Student Added");
+        })
 
 
     }
 
     useEffect(() => {
+
 
     }, [])
     return (
@@ -50,15 +58,6 @@ export default function Student() {
                         Submit
                     </Button>
                 </form>
-
-            </Paper>
-            <h1>Students</h1>
-
-            <Paper elevation={3} style={paperStyle}>
-
-
-                {name}
-                {address}
 
             </Paper>
 
